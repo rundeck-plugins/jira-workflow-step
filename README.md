@@ -59,7 +59,7 @@ Note, the JIRA issue ID is passed as a job option:
     - type: JIRA-Issue-Exists
       nodeStep: false
       configuration:
-        issue key: ${option.jira_issue}
+        issue-key: ${option.jira_issue}
     - exec: echo hi
   uuid: 1eb09968-6390-441f-be8e-6649eeba581c
   options:

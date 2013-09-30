@@ -26,7 +26,7 @@ import java.util.Map;
 @PluginDescription(title = "JIRA Issue Exists", description = "Fail if the specified issue does not exists.")
 public class JiraWorkflowStep implements StepPlugin {
 
-    @PluginProperty(name = "issue key", title = "issue key", description = "Jira issue ID")
+    @PluginProperty(name = "issue-key", title = "issue key", description = "Jira issue ID")
     private String issueKey;
 
     @PluginProperty(name = "url", title = "Server URL", description = "Jira server URL", scope = PropertyScope.Project)
@@ -55,7 +55,7 @@ public class JiraWorkflowStep implements StepPlugin {
             throw new IllegalStateException("server URL is required");
         }
         if (null == issueKey) {
-            throw new IllegalStateException("issue key is required");
+            throw new IllegalStateException("issue-key is required");
         }
         /**
          * Connect to JIRA using the configured credentials.
