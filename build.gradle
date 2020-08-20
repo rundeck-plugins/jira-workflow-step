@@ -4,7 +4,7 @@ plugins {
 defaultTasks 'clean','build'
 apply plugin: 'java'
 apply plugin: 'idea'
-sourceCompatibility = 1.5
+sourceCompatibility = 1.8
 ext.rundeckPluginVersion= '1.1'
 
 scmVersion {
@@ -33,7 +33,7 @@ ext.pluginClassNames='org.rundeck.plugins.workflow.JiraWorkflowStep'
 
 repositories {
     mavenCentral()
-    
+
     flatDir {
         dirs 'lib'
     }
@@ -43,8 +43,8 @@ configurations{
     //declare custom pluginLibs configuration to include only libs for this plugin
     pluginLibs
 
-    //declare compile to extend from pluginLibs so it inherits the dependencies
-    compile{
+    //declare implementation to extend from pluginLibs so it inherits the dependencies
+    implementation{
         extendsFrom pluginLibs
     }
 }
@@ -52,11 +52,11 @@ configurations{
 dependencies {
     // add any third-party jar dependencies you wish to include in the plugin
     // using the `pluginLibs` configuration as shown here:
-    
+
     pluginLibs group: 'net.rcarz', name: 'jira-client', version: '0.3'
-    
-    //the compile dependency won't add the rundeck-core jar to the plugin contents
-    compile group: 'org.rundeck', name: 'rundeck-core', version: '1.6.2'
+
+    //the implementation dependency won't add the rundeck-core jar to the plugin contents
+    implementation group: 'org.rundeck', name: 'rundeck-core', version: '1.6.2'
 }
 
 // task to copy plugin libs to output/lib dir
@@ -86,6 +86,3 @@ jar {
 }
 jar.dependsOn(copyToLib)
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '1.3'
-}
